@@ -7,7 +7,21 @@ public class Menu {
 	public static Scanner sc = new Scanner(System.in);
 	
 	
+
+	
+	
 	public static void main(String[] args) {
+		 
+		/*Creació del fitxer*/
+		try {
+		File pp = new File("pp.txt");
+		if (!pp.exists()) {
+            pp.createNewFile();
+            }
+		 } catch (Exception e) {
+	            e.printStackTrace();//imprimeix l'error
+	        }
+            
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Benvingut al Joc de paraules anglès-català.");
 		
@@ -27,6 +41,10 @@ public class Menu {
 			 
 			 case 1: //catala
 				 
+				 //mostrara paraula en angles i la tindrem que traduir
+				 joc1.paraulaCat();				 
+				 
+				 
 				 
 				 break;
 				 
@@ -37,7 +55,7 @@ public class Menu {
 			 }
 			  
 			 
-		 } while (opt != 1 || opt != 2);
+		 } while (opt != 1 || opt != 2); //NECESSITA ALGUNS RETOCS PER A SORTIR
 			
 			
 			break;
@@ -50,7 +68,8 @@ public class Menu {
 				opc_gestio = sc.nextInt();
 						switch(opc_gestio) {
 								case 1: //AFEGIR
-									
+									System.out.println("AFEGIR\n");
+									gestio1.afegir();
 									
 									break;
 									
@@ -64,7 +83,7 @@ public class Menu {
 								case 4: //ARXIVAR
 									System.out.println("ARXIVAR\n");
 									System.out.println("Creant fitxer \"pp.txt\"...\n");
-									creacioFitxer();
+									gestio1.creacioFitxer();
 									
 									
 									break;
@@ -101,27 +120,12 @@ public class Menu {
 	} while (running);
 		
 		
+		
 	}
 
-	public static void creacioFitxer() {
-		try {
-            File pp = new File("src\\Jocparaules\\pp.txt");
-            // Si el archivo no existe es creado
-            System.out.println("hola");
-            if (!pp.exists()) {
-                pp.createNewFile();
-                System.out.println("Creant");
-            }
-            FileWriter fw = new FileWriter(pp);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write("hola");
-            bw.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-	}
 	
-	
+	public static Gestio gestio1 = new Gestio();//creo objecte gestio
+	public static Joc joc1 = new Joc();
 	
 
 }
