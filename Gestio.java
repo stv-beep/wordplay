@@ -29,7 +29,7 @@ public class Gestio {
 		String catala = sc.nextLine();
 		System.out.println("Escriu la paraula en anglès: ");
 		String angles = sc.nextLine();
-		String parella = catala + "-" + angles + ","; // - per a separar les traduccions, "," per a separar les parelles
+		String parella = catala + "-" + angles + "-"; // - per a separar les traduccions, "," per a separar les parelles
 		
 		try {
 			PrintStream escriptor = new PrintStream(new FileOutputStream("pp.txt", true)); 
@@ -49,6 +49,7 @@ public class Gestio {
 	string.split("-")*/
 	
 	
+
 	
 
 }

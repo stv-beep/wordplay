@@ -35,7 +35,7 @@ public class Menu {
 			System.out.println("Entrant al joc...\n");
 			int opc_idioma = 0;
 		 do {
-			 System.out.println("Escull idioma ( 1 = Català | 2 = Anglès)\n");
+			 System.out.println("Escull idioma ( 1 = Català | 2 = Anglès | 3 = Sortir)\n");
 			 opc_idioma = sc.nextInt();
 			 switch (opc_idioma) {
 			 
@@ -44,22 +44,27 @@ public class Menu {
 				 //mostrara paraula en angles i la tindrem que traduir
 				 joc1.paraulaCat();				 
 				 
-				 
-				 
 				 break;
 				 
 			 case 2: //angles
-				 
+				 joc1.paraulaAng();
 				 
 				 break;
+				 
+				 
+			default:
+				running = false;
+				break;
+			 
+				 
 			 }
 			  
-			 
-		 } while (opt != 1 || opt != 2); //NECESSITA ALGUNS RETOCS PER A SORTIR
+			
+		 } while (running); //NECESSITA ALGUNS RETOCS PER A SORTIR
 			
 			
-			break;
-		
+		 break;
+		 		
 		case 2: //GESTIO DE L'APP
 			System.out.println("Entrant a la gestió de l'aplicació...\n");
 			int opc_gestio = 0;
