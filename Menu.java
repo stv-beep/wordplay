@@ -2,16 +2,26 @@ package Jocparaules;
 import java.util.Scanner;
 import java.io.*;
 
+/**
+ * Classe principal, menú del joc.
+ * @author Aleix Algueró
+ *
+ */
+
 public class Menu {
 	public static boolean running = true;//un boolea per a tancar el programa quan sigui necessari
+	public static boolean runningG = true;
+	public static boolean runningJ = true;
 	
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
-		 
+		 int tradang = 0;//paraules encertades
+		 int tradcat = 0;//paraules encertades
 		/*Creació del fitxer, comprovant si existeix abans*/
 		try {
 		File pp = new File("pp.txt");
+		
 		if (!pp.exists()) {
             pp.createNewFile();
             }
@@ -19,6 +29,7 @@ public class Menu {
 	            e.printStackTrace();//imprimeix l'error
 	        }
             
+
 		System.out.println("Benvingut al WORDPLAY");
 		
 		int opt = 0;//opció escollida pel user
@@ -38,22 +49,20 @@ public class Menu {
 			 case 1: //catala
 				 
 				 //mostrara paraula en angles i la tindrem que traduir
-				 joc1.paraulaCat();				 
-				 
+				 tradcat = joc1.anglesCatala();				 
 				 break;
 				 
 			 case 2: //angles
-				 joc1.paraulaAng();
-				 
+				 tradang = joc1.catalaAngles();
 				 break;
 				 
 			default:
-				running = false;
+				runningJ = false;
 				break;
-		 
+
 			 }
 	
-		 } while (running); //NECESSITA ALGUNS RETOCS PER A SORTIR
+		 } while (runningJ); //NECESSITA ALGUNS RETOCS PER A SORTIR
 	
 		 break;
 		 		
@@ -61,18 +70,16 @@ public class Menu {
 			System.out.println("Entrant a la gestió de l'aplicació...\n");
 			int opc_gestio = 0;
 			do {
-				System.out.println("Tria entre Afegir = 1 || Modificar = 2 || Esborrar = 3 || Arxivar = 4 || Sortir = 5");
+				System.out.println("Tria entre Afegir = 1 || Modificar = 2 || Esborrar = 3 || Arxivar = 4 || Llistat = 5 || Sortir = 6");
 				opc_gestio = sc.nextInt();
 						switch(opc_gestio) {
 								case 1: //AFEGIR
 									System.out.println("AFEGIR\n");
 									gestio1.afegir();
-									
 									break;
 									
 								case 2: //MODIFICAR
 									break;
-						
 									
 								case 3: //ESBORRAR
 									break;
@@ -81,19 +88,23 @@ public class Menu {
 									System.out.println("ARXIVAR\n");
 									System.out.println("Creant fitxer \"pp.txt\"...\n");
 									gestio1.creacioFitxer();
-	
+									gestio1.creacioMarcador();
 									break;
 								
+								case 5: //LLISTAT
+									joc1.marcador(tradcat, tradang);
+									break;
+									
 								default:		
 									break;
 										
-								case 5:
-									running = false;
+								case 6:
+									runningG = false;
 									break;
 						
 						}	
 						
-						} while (running);
+						} while (runningG);
 
 					break;
 

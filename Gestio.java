@@ -2,7 +2,11 @@ package Jocparaules;
 import java.util.Scanner;
 import java.io.*;
 
-
+/**
+ * Classe Gestio. Metodes de la gestió i configuració del joc.
+ * @author Aleix Algueró
+ *
+ */
 public class Gestio {
 	
 	public static Scanner sc = new Scanner(System.in);
@@ -44,10 +48,33 @@ public class Gestio {
 			escriptor.write(parella.getBytes());
 			escriptor.close();
 			
+			
 		} catch (Exception e) {
 		e.printStackTrace();	
 		}
 			
 	}
+	
+	/**
+	 * Metode per a crear l'arxiu marcador.txt on es guardarà el número de paraules traduïdes correctament
+	 */
+	public static void creacioMarcador() {
+		try {
+            File fitxerMarcador = new File("marcador.txt");
+            if (!fitxerMarcador.exists()) {
+            	fitxerMarcador.createNewFile();
+                } 
+            System.out.println("Creant marcador...\n");
+            FileWriter fw = new FileWriter(fitxerMarcador);
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.close();
+            PrintStream escriptor = new PrintStream(fitxerMarcador);
+    		escriptor.println("Llistat de paraules traduïdes correctament:\n"); 
+        } catch (Exception e) {
+            e.printStackTrace();//imprimeix l'error
+        }
+	}
+		
+		
 
 }
