@@ -1,0 +1,3 @@
+*LLEGEIX-ME*
+
+Si no has jugat mai, quan l'executes entra a la gestió, i prem 4 per a entrar a arxivar. Després 1 per a entrar a afegir parelles de paraules. Surt i després ves al joc en si i tria l'idioma.
