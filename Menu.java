@@ -3,16 +3,13 @@ import java.util.Scanner;
 import java.io.*;
 
 public class Menu {
-	public static boolean running = true;
-	public static Scanner sc = new Scanner(System.in);
-	
-	
-
-	
+	public static boolean running = true;//un boolea per a tancar el programa quan sigui necessari
 	
 	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
 		 
-		/*Creació del fitxer*/
+		/*Creació del fitxer, comprovant si existeix abans*/
 		try {
 		File pp = new File("pp.txt");
 		if (!pp.exists()) {
@@ -22,10 +19,9 @@ public class Menu {
 	            e.printStackTrace();//imprimeix l'error
 	        }
             
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Benvingut al Joc de paraules anglès-català.");
+		System.out.println("Benvingut al WORDPLAY");
 		
-		int opt = 0;
+		int opt = 0;//opció escollida pel user
 	do {
 		System.out.println("Prem 1 per a jugar ó 2 per a gestionar l'aplicació. 3 per a sortir del programa.");
 		opt = sc.nextInt();
@@ -51,18 +47,14 @@ public class Menu {
 				 
 				 break;
 				 
-				 
 			default:
 				running = false;
 				break;
-			 
-				 
+		 
 			 }
-			  
-			
+	
 		 } while (running); //NECESSITA ALGUNS RETOCS PER A SORTIR
-			
-			
+	
 		 break;
 		 		
 		case 2: //GESTIO DE L'APP
@@ -89,11 +81,10 @@ public class Menu {
 									System.out.println("ARXIVAR\n");
 									System.out.println("Creant fitxer \"pp.txt\"...\n");
 									gestio1.creacioFitxer();
-									
-									
+	
 									break;
 								
-								default:
+								default:		
 									break;
 										
 								case 5:
@@ -104,16 +95,11 @@ public class Menu {
 						
 						} while (running);
 
-			
-			
-			
 					break;
-			
-			
-			
-		
+
 		case 3:
 			running = false;
+			break;
 		
 		default:
 			System.out.println("Opció incorrecta. Si us plau, 1 joc, 2 gestió.");
@@ -128,9 +114,8 @@ public class Menu {
 		
 	}
 
-	
-	public static Gestio gestio1 = new Gestio();//creo objecte gestio
+	/*Creació d'objectes per als mètodes*/
+	public static Gestio gestio1 = new Gestio();
 	public static Joc joc1 = new Joc();
-	
 
 }
