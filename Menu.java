@@ -4,20 +4,20 @@ import java.io.*;
 
 /**
  * Classe principal, menú del joc.
- * @author Aleix Algueró
+ * @author Aleix Algueró, Anwar el Khattabi, Pepe Curto
  *
  */
 
 public class Menu {
-	public static boolean running = true;//un boolea per a tancar el programa quan sigui necessari
-	public static boolean runningG = true;
-	public static boolean runningJ = true;
 	
 	public static void main(String[] args) {
-		
+		boolean running = true;//un boolea per a tancar el programa quan sigui necessari
+		boolean runningG = true;
+		boolean runningJ = true;
 		Scanner sc = new Scanner(System.in);
-		 int tradang = 0;//paraules encertades
-		 int tradcat = 0;//paraules encertades
+		 int tradang = 0;//paraules encertades de catala a angles
+		 int tradcat = 0;//paraules encertades d'angles a catala
+		 int partides = 0;//partides realitzades
 		/*Creació del fitxer, comprovant si existeix abans*/
 		try {
 		File pp = new File("pp.txt");
@@ -44,16 +44,21 @@ public class Menu {
 		 do {
 			 System.out.println("Escull idioma ( 1 = Català | 2 = Anglès | 3 = Sortir)\n");
 			 opc_idioma = sc.nextInt();
+			 boolean buit = true;
 			 switch (opc_idioma) {
 			 
 			 case 1: //catala
-				 
-				 //mostrara paraula en angles i la tindrem que traduir
-				 tradcat = joc1.anglesCatala();				 
+				 buit = joc1.docBuit();
+				 if (buit == false) {
+				 tradcat = joc1.anglesCatala();	//mostrara paraula en angles i la tindrem que traduir
+				 } else { System.out.println("No hi ha paraules. Per favor introdueix-les a l'opció AFEGIR\n");}
 				 break;
 				 
 			 case 2: //angles
+				 buit = joc1.docBuit();
+				 if (buit == false) {
 				 tradang = joc1.catalaAngles();
+				 } else { System.out.println("No hi ha paraules. Per favor introdueix-les a l'opció AFEGIR\n");}
 				 break;
 				 
 			default:
@@ -62,7 +67,7 @@ public class Menu {
 
 			 }
 	
-		 } while (runningJ); //NECESSITA ALGUNS RETOCS PER A SORTIR
+		 } while (runningJ);
 	
 		 break;
 		 		
@@ -85,14 +90,15 @@ public class Menu {
 									break;
 									
 								case 4: //ARXIVAR
-									System.out.println("ARXIVAR\n");
-									System.out.println("Creant fitxer \"pp.txt\"...\n");
+									System.out.println("ARXIVAR\n");	
 									gestio1.creacioFitxer();
 									gestio1.creacioMarcador();
 									break;
 								
 								case 5: //LLISTAT
-									joc1.marcador(tradcat, tradang);
+									System.out.println("LLISTAT\n");
+									partides++;
+									joc1.marcador(tradcat, tradang, partides);
 									break;
 									
 								default:		
@@ -121,8 +127,7 @@ public class Menu {
 		
 	} while (running);
 		
-		
-		
+
 	}
 
 	/*Creació d'objectes per als mètodes*/

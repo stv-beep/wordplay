@@ -11,7 +11,6 @@ public class Gestio {
 	
 	public static Scanner sc = new Scanner(System.in);
 	
-	
 	/**
 	 * Metode que crea el fitxer. Si que al main també el creem, però allí a més, comprovem si ja existeix,
 	 * per a evitar sobreescriure'l. Aquí el creem de nou, borrant les paraules que havien anteriorment.
@@ -19,11 +18,8 @@ public class Gestio {
 	public static void creacioFitxer() {
 		try {
             File pp = new File("pp.txt");
-            System.out.println("Creant fitxer...Per favor, ves a l'opció \"AFEGIR\" per a afegir noves parelles");
+            System.out.println("Creant fitxer pp.txt... Per favor, entra a l'opció \"AFEGIR\" per a afegir noves parelles.");
             
-            FileWriter fw = new FileWriter(pp);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.close();
         } catch (Exception e) {
             e.printStackTrace();//imprimeix l'error
         }
@@ -48,7 +44,6 @@ public class Gestio {
 			escriptor.write(parella.getBytes());
 			escriptor.close();
 			
-			
 		} catch (Exception e) {
 		e.printStackTrace();	
 		}
@@ -64,17 +59,14 @@ public class Gestio {
             if (!fitxerMarcador.exists()) {
             	fitxerMarcador.createNewFile();
                 } 
-            System.out.println("Creant marcador...\n");
-            FileWriter fw = new FileWriter(fitxerMarcador);
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.close();
+            System.out.println("Creant marcador... Per favor, entra a l'opció \"LLISTAT\" per a consultar el marcador.\n");
+
             PrintStream escriptor = new PrintStream(fitxerMarcador);
-    		escriptor.println("Llistat de paraules traduïdes correctament:\n"); 
+    		escriptor.println("Llistat de partides:\n"); 
         } catch (Exception e) {
             e.printStackTrace();//imprimeix l'error
         }
 	}
-		
 		
 
 }
