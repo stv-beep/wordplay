@@ -84,9 +84,11 @@ public class Menu {
 									break;
 									
 								case 2: //MODIFICAR
+									gestio1.modificar();
 									break;
 									
 								case 3: //ESBORRAR
+									gestio1.elminar1ElementArray();
 									break;
 									
 								case 4: //ARXIVAR

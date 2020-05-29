@@ -137,7 +137,7 @@ public class Joc {
 			BufferedReader bf = new BufferedReader(fr);
 				String line;
 				  
-		if ((line = bf.readLine())!=null) {
+		if ((line = bf.readLine())!=null) {//comprova si hi ha linies
 				return false;
 			} else { return true; }
 		
